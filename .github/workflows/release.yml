@@ -15,27 +15,15 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: Configure git
-      run: |
-        git config --global user.name github-actions
-        git config --global user.email actions@github.com
-
-    - name: Install @zeit/ncc
-      run: npm i -g @zeit/ncc
-
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
-
-    - name: Build
-      run: ncc build index.js
-
-    - name: Push
+    - name: Extract
+      id: extract
       run: |
-        rm -rf .github node_modules index.js package.json yarn.lock
-        git checkout -b release-${GITHUB_REF#refs/heads/}
-        git add .
-        git commit -m "[auto]"
-        git push -f -u origin release-${GITHUB_REF#refs/heads/}
+        echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+
+    - name: Release
+      uses: satackey/release-js-action@release-master
+      with:
+        release-branch: release-${{ steps.extract.outputs.branch }}
