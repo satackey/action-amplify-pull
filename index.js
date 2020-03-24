@@ -82,5 +82,5 @@ const main = async () => {
 }
 
 main().catch(e => {
-  core.setFailed(e.message || JSON.stringify(e))
+  core.setFailed(`An error occurred: ${e.message || JSON.stringify(e)}`)
 })

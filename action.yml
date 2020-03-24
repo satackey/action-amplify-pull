@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Install amplify & pull env'
+description: 'Install amplify globally, and pull env by specific name'
 inputs:
   access-key-id:
     required: true
@@ -14,9 +14,6 @@ inputs:
   env-name:
     required: true
 
-# outputs:
-#   time: # id of output
-#     description: 'The time we greeted you'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
