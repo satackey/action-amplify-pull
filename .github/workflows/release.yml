@@ -6,7 +6,7 @@ on:
     - '**'
 
 jobs:
-  'Build and release':
+  build_and_push:
     runs-on: ubuntu-18.04
 
     steps:
