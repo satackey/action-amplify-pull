@@ -34,7 +34,7 @@ jobs:
 
     - name: Push
       run: |
-        rm -rf node_modules package.json yarn.lock
+        rm -rf .github node_modules index.js package.json yarn.lock
         git checkout -b release-${GITHUB_REF#refs/heads/}
         git add .
         git commit -m "[auto]"
