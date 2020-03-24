@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - name: Extract
-      run:
     - name: Setup node.js
       uses: actions/setup-node@v1
       with:
